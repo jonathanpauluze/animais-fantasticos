@@ -4,14 +4,14 @@ export default function initTabNav() {
 
   function activeTab(index) {
     tabContent.forEach((section) => {
-      section.classList.remove('ativo');
+      section.classList.remove('active');
     });
     const direcao = tabContent[index].dataset.anime;
-    tabContent[index].classList.add('ativo', direcao);
+    tabContent[index].classList.add('active', direcao);
   }
 
   if (tabMenu.length && tabContent.length) {
-    tabContent[0].classList.add('ativo');
+    tabContent[0].classList.add('active');
     tabMenu.forEach((itemMenu, index) => {
       itemMenu.addEventListener('click', () => {
         activeTab(index);
