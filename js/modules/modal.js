@@ -5,7 +5,7 @@ export default function initModal() {
 
   function toggleModal(event) {
     event.preventDefault();
-    containerModal.classList.toggle('ativo');
+    containerModal.classList.toggle('active');
   }
 
   function cliqueForaModal(event) {
