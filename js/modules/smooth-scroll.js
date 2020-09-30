@@ -1,5 +1,5 @@
 export default class SmoothScroll {
-  constructor(links, options) {
+  constructor({ links, options }) {
     this.internalLinks = document.querySelectorAll(links);
 
     if (!options) {
