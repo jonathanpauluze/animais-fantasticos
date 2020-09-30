@@ -1,22 +1,39 @@
-export default function initModal() {
-  const botaoAbrir = document.querySelector('[data-modal="abrir"]');
-  const botaoFechar = document.querySelector('[data-modal="fechar"]');
-  const containerModal = document.querySelector('[data-modal="container"]');
+export default class Modal {
+  constructor({ openButton, closeButton, modalContainer }) {
+    this.openButton = document.querySelector(openButton);
+    this.closeButton = document.querySelector(closeButton);
+    this.modalContainer = document.querySelector(modalContainer);
 
-  function toggleModal(event) {
-    event.preventDefault();
-    containerModal.classList.toggle('active');
+    this.toggleModalEvent = this.toggleModalEvent.bind(this);
+    this.clickOutsideModal = this.clickOutsideModal.bind(this);
   }
 
-  function cliqueForaModal(event) {
-    if (event.target === this) {
-      toggleModal(event);
+  toggleModal() {
+    this.modalContainer.classList.toggle('active');
+  }
+
+  toggleModalEvent(event) {
+    event.preventDefault();
+    this.toggleModal();
+  }
+
+  addModalEvents() {
+    this.openButton.addEventListener('click', this.toggleModalEvent);
+    this.closeButton.addEventListener('click', this.toggleModalEvent);
+    this.modalContainer.addEventListener('click', this.clickOutsideModal);
+  }
+
+  clickOutsideModal(event) {
+    if (event.target === this.modalContainer) {
+      this.toggleModal();
     }
   }
 
-  if (botaoAbrir && botaoFechar && containerModal) {
-    botaoAbrir.addEventListener('click', toggleModal);
-    botaoFechar.addEventListener('click', toggleModal);
-    containerModal.addEventListener('click', cliqueForaModal);
+  init() {
+    if (this.openButton && this.closeButton && this.modalContainer) {
+      this.addModalEvents();
+    }
+
+    return this;
   }
 }
