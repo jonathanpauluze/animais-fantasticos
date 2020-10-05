@@ -1,10 +1,10 @@
-import initAnimaNumeros from './anima-numeros.js';
+import NumbersAnimation from './numbers-animation.js';
 
 export default function initFetchAnimais() {
   function createAnimal(animal) {
     const div = document.createElement('div');
-    div.classList.add('numero-animal');
-    div.innerHTML = `<h3>${animal.specie}</h3><span data-numero>${animal.total}</span>`;
+    div.classList.add('animal-number');
+    div.innerHTML = `<h3>${animal.specie}</h3><span data-number>${animal.total}</span>`;
     return div;
   }
 
@@ -12,12 +12,17 @@ export default function initFetchAnimais() {
     try {
       const animaisResponse = await fetch(url);
       const animaisJSON = await animaisResponse.json();
-      const numerosGrid = document.querySelector('.numeros-grid');
+      const numbersGrid = document.querySelector('.numbers-grid');
       animaisJSON.forEach((animal) => {
         const divAnimal = createAnimal(animal);
-        numerosGrid.appendChild(divAnimal);
+        numbersGrid.appendChild(divAnimal);
       });
-      initAnimaNumeros();
+      const numbersAnimation = new NumbersAnimation({
+        numbers: '[data-number]',
+        observerTarget: '.numbers',
+        observerClass: 'active',
+      });
+      numbersAnimation.init();
     } catch (erro) {
       console.log(erro);
     }
