@@ -3,12 +3,12 @@ import Accordion from './modules/accordion.js';
 import TabNav from './modules/tabnav.js';
 import Modal from './modules/modal.js';
 import Tooltip from './modules/tooltip.js';
+import AnimateOnScroll from './modules/animate-on-scroll.js';
 import fetchAnimals from './modules/fetch-animals.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import initDropdownMenu from './modules/dropdown-menu.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initFuncionamento from './modules/funcionamento.js';
-import initAnimacaoScroll from './modules/scroll-animacao.js';
 
 const smoothScroll = new SmoothScroll({
   links: '[data-menu="smooth"] a[href^="#"]',
@@ -38,10 +38,14 @@ const tooltip = new Tooltip({
 });
 tooltip.init();
 
+const animateOnScroll = new AnimateOnScroll({
+  sections: '[data-animate="scroll"]',
+});
+animateOnScroll.init();
+
 fetchAnimals('../../animalsapi.json', '.numbers-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
 
 initDropdownMenu();
 initMenuMobile();
 initFuncionamento();
-initAnimacaoScroll();
