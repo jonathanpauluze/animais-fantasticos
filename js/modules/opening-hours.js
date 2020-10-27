@@ -23,7 +23,7 @@ export default class OpeningHours {
   }
 
   activeOpened() {
-    if (this.isOpen) {
+    if (this.isOpen()) {
       this.openingDays.classList.add(this.activeClass);
     }
   }
