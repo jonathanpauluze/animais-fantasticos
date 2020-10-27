@@ -60,5 +60,5 @@ const openingHours = new OpeningHours({
 openingHours.init();
 
 
-fetchAnimals('../../animalsapi.json', '.numbers-grid');
+fetchAnimals('./animalsapi.json', '.numbers-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
