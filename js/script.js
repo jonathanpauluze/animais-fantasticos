@@ -7,7 +7,7 @@ import AnimateOnScroll from './modules/animate-on-scroll.js';
 import fetchAnimals from './modules/fetch-animals.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import DropdownMenu from './modules/dropdown-menu.js';
-import initMenuMobile from './modules/menu-mobile.js';
+import MobileMenu from './modules/mobile-menu.js';
 import initFuncionamento from './modules/funcionamento.js';
 
 const smoothScroll = new SmoothScroll({
@@ -48,9 +48,14 @@ const dropdownMenu = new DropdownMenu({
 });
 dropdownMenu.init();
 
+const mobileMenu = new MobileMenu({
+  menuButton: '[data-menu="button"]',
+  menuList: '[data-menu="list"]',
+});
+mobileMenu.init();
+
 
 fetchAnimals('../../animalsapi.json', '.numbers-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
 
-initMenuMobile();
 initFuncionamento();
