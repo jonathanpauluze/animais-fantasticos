@@ -8,7 +8,7 @@ import fetchAnimals from './modules/fetch-animals.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
 import DropdownMenu from './modules/dropdown-menu.js';
 import MobileMenu from './modules/mobile-menu.js';
-import initFuncionamento from './modules/funcionamento.js';
+import OpeningHours from './modules/opening-hours.js';
 
 const smoothScroll = new SmoothScroll({
   links: '[data-menu="smooth"] a[href^="#"]',
@@ -54,8 +54,11 @@ const mobileMenu = new MobileMenu({
 });
 mobileMenu.init();
 
+const openingHours = new OpeningHours({
+  openingDays: '[data-weekdays]',
+});
+openingHours.init();
+
 
 fetchAnimals('../../animalsapi.json', '.numbers-grid');
 fetchBitcoin('https://blockchain.info/ticker', '.btc-price');
-
-initFuncionamento();
