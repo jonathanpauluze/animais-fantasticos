@@ -17,8 +17,11 @@ export default class OpeningHours {
 
   isOpen() {
     this.openWeek = this.weekdays.indexOf(this.currentDay) !== -1;
-    this.openTime = (this.currentTime >= this.weeklySchedule[0] && this.currentTime < this.weeklySchedule[1]);
-  
+    this.openTime = (
+      this.currentTime >= this.weeklySchedule[0]
+      && this.currentTime < this.weeklySchedule[1]
+    );
+
     return this.openWeek && this.openTime;
   }
 
