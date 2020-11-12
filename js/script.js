@@ -29,7 +29,7 @@ tabNav.init();
 
 const modal = new Modal({
   openButton: '[data-modal="abrir"]',
-  closeButton: '[data-modal="fechar"]',
+  closeButton: '[data-modal="close"]',
   modalContainer: '[data-modal="container"]',
 });
 modal.init();
